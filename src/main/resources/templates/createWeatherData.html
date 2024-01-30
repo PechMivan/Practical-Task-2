@@ -9,11 +9,11 @@
 
 <h2>Weather Data Form</h2>
 
-<form th:action="@{/weatherData}" method="post" th:object="${weatherForm}">
+<form th:action="@{/api/weather/weatherData}" method="post" th:object="${weatherForm}">
     <label for="location">Location (City or Zip Code): </label>
     <input type="text" id="location" name="location" th:field="*{location}" required>
 
-    <button type="submit">Get Weather Data</button>
+    <button type="submit">Save Weather Data</button>
 </form>
 
 </body>

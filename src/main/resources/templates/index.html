@@ -9,6 +9,10 @@
 
 <h2>Saved Weather Data</h2>
 
+<div th:if="${#lists.isEmpty(weatherDataList)}">
+    <p>No objects in the list.</p>
+</div>
+
 <table>
     <thead>
     <tr>
@@ -35,7 +39,7 @@
     </tbody>
 </table>
 
-<a th:href="@{/weatherForm}">
+<a th:href="@{/api/weather/weatherForm}">
     <button type="button">Save a new Weather Data</button>
 </a>
 

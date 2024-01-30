@@ -17,27 +17,51 @@ public class WeatherData implements Serializable {
 
     @Embedded
     @JsonProperty("location")
-    private Location location;
+    public Location location;
 
     @Embedded
     @JsonProperty("current")
-    private CurrentWeather current;
+    public CurrentWeather current;
 
-    // Getters and setters
+    public WeatherData() {
+    }
 
-    // Additional methods or constructors as needed
-
-    // Inner classes for nested structures
+    public WeatherData(Long id, Location location, CurrentWeather current) {
+        this.id = id;
+        this.location = location;
+        this.current = current;
+    }
 
     @Embeddable
     public static class Location {
+        @JsonProperty("name")
         private String name;
+        @JsonProperty("country")
         private String country;
 
-        // Getters and setters for 'name' and 'country'
-        // ...
+        public Location() {
+        }
 
-        // Additional fields if needed
+        public Location(String name, String country) {
+            this.name = name;
+            this.country = country;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
     }
 
     @Embeddable
@@ -51,11 +75,49 @@ public class WeatherData implements Serializable {
         @JsonProperty("precip_mm")
         private Double precipitationMm;
 
+        @JsonProperty("humidity")
         private Integer humidity;
 
-        // Getters and setters for 'temperatureC', 'windKph', 'precipitationMm', and 'humidity'
-        // ...
+        public CurrentWeather() {
+        }
 
-        // Additional fields if needed
+        public CurrentWeather(Double temperatureC, Double windKph, Double precipitationMm, Integer humidity) {
+            this.temperatureC = temperatureC;
+            this.windKph = windKph;
+            this.precipitationMm = precipitationMm;
+            this.humidity = humidity;
+        }
+
+        public Double getTemperatureC() {
+            return temperatureC;
+        }
+
+        public void setTemperatureC(Double temperatureC) {
+            this.temperatureC = temperatureC;
+        }
+
+        public Double getWindKph() {
+            return windKph;
+        }
+
+        public void setWindKph(Double windKph) {
+            this.windKph = windKph;
+        }
+
+        public Double getPrecipitationMm() {
+            return precipitationMm;
+        }
+
+        public void setPrecipitationMm(Double precipitationMm) {
+            this.precipitationMm = precipitationMm;
+        }
+
+        public Integer getHumidity() {
+            return humidity;
+        }
+
+        public void setHumidity(Integer humidity) {
+            this.humidity = humidity;
+        }
     }
 }
