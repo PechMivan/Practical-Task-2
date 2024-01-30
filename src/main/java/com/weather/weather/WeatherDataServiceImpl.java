@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class WeatherDataServiceImpl implements WeatherDataService {
 
@@ -19,6 +21,11 @@ public class WeatherDataServiceImpl implements WeatherDataService {
     @Override
     public WeatherData saveWeatherData(WeatherData weatherData) {
         return weatherDataRepository.save(weatherData);
+    }
+
+    @Override
+    public List<WeatherData> getAllWeatherData() {
+        return (List<WeatherData>) weatherDataRepository.findAll();
     }
 
     @Override

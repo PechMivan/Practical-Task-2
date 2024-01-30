@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Weather Data</title>
+</head>
+<body>
+
+<h2>Saved Weather Data</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Temperature (°C)</th>
+        <th>Wind Speed (kph)</th>
+        <th>Precipitation (mm)</th>
+        <th>Humidity (%)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate over the list of WeatherData objects -->
+    <tr th:each="weatherData : ${weatherDataList}">
+        <td th:text="${weatherData.id}"></td>
+        <td th:text="${weatherData.location.name}"></td>
+        <td th:text="${weatherData.location.country}"></td>
+        <td th:text="${weatherData.current.temperatureC}"></td>
+        <td th:text="${weatherData.current.windKph}"></td>
+        <td th:text="${weatherData.current.precipitationMm}"></td>
+        <td th:text="${weatherData.current.humidity}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/weatherForm}">
+    <button type="button">Save a new Weather Data</button>
+</a>
+
+</body>
+</html>
