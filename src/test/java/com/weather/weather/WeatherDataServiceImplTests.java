@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
-public class WeatherDataServiceImplTests {
+ class WeatherDataServiceImplTests {
 
     @Mock
     private WeatherDataRepository weatherDataRepository;
@@ -27,12 +27,12 @@ public class WeatherDataServiceImplTests {
     private WeatherDataServiceImpl weatherDataService;
 
     @BeforeEach
-    public void setUp() {
+     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    public void testSaveWeatherData() {
+     void testSaveWeatherData() {
         // Mock repository behavior
         WeatherData.Location location1 = new WeatherData.Location("merida", "mexico");
         WeatherData.CurrentWeather cw1 = new WeatherData.CurrentWeather(23.4, 43.6, 38.5, 60);
@@ -47,7 +47,7 @@ public class WeatherDataServiceImplTests {
     }
 
     @Test
-    public void testGetAllWeatherData() {
+     void testGetAllWeatherData() {
         // Mock repository behavior
         WeatherData.Location location1 = new WeatherData.Location("merida", "mexico");
         WeatherData.Location location2 = new WeatherData.Location("mexico city", "mexico");
@@ -64,7 +64,7 @@ public class WeatherDataServiceImplTests {
     }
 
     @Test
-    public void testGetWeatherDataById() {
+     void testGetWeatherDataById() {
         WeatherData.Location location1 = new WeatherData.Location("merida", "mexico");
         WeatherData.CurrentWeather cw1 = new WeatherData.CurrentWeather(23.4, 43.6, 38.5, 60);
         WeatherData mockWeatherData = new WeatherData(1L, location1, cw1);
@@ -78,7 +78,7 @@ public class WeatherDataServiceImplTests {
     }
 
     @Test
-    public void testGetWeatherDataFromApi() {
+     void testGetWeatherDataFromApi() {
         // Mock restTemplate behavior
         String cityName = "TestCity";
         WeatherData.Location location1 = new WeatherData.Location("merida", "mexico");

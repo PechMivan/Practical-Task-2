@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-public class WeatherDataControllerTests {
+ class WeatherDataControllerTests {
 
     @Mock
     private WeatherDataService weatherDataService;
@@ -27,13 +27,13 @@ public class WeatherDataControllerTests {
     private MockMvc mockMvc;
 
     @BeforeEach
-    public void setUp() {
+     void setUp() {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(weatherDataController).build();
     }
 
     @Test
-    public void testShowWeatherDataList() throws Exception {
+     void testShowWeatherDataList() throws Exception {
         // Mock service behavior
         List<WeatherData> mockWeatherDataList = Arrays.asList(new WeatherData(), new WeatherData());
         when(weatherDataService.getAllWeatherData()).thenReturn(mockWeatherDataList);
@@ -49,7 +49,7 @@ public class WeatherDataControllerTests {
     }
 
     @Test
-    public void testShowWeatherForm() throws Exception {
+     void testShowWeatherForm() throws Exception {
         // Perform the request
         mockMvc.perform(get("/api/weather/weatherForm"))
                 .andExpect(status().isOk())
@@ -58,7 +58,7 @@ public class WeatherDataControllerTests {
     }
 
     @Test
-    public void testSubmitWeatherForm() throws Exception {
+     void testSubmitWeatherForm() throws Exception {
         // Mock service behavior
         WeatherData mockWeatherData = new WeatherData();
         when(weatherDataService.getWeatherDataFromApi(anyString())).thenReturn(mockWeatherData);
