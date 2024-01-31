@@ -34,7 +34,9 @@ public class WeatherDataServiceImplTests {
     @Test
     public void testSaveWeatherData() {
         // Mock repository behavior
-        WeatherData mockWeatherData = new WeatherData();
+        WeatherData.Location location1 = new WeatherData.Location("merida", "mexico");
+        WeatherData.CurrentWeather cw1 = new WeatherData.CurrentWeather(23.4, 43.6, 38.5, 60);
+        WeatherData mockWeatherData = new WeatherData(1L, location1, cw1);
         when(weatherDataRepository.save(any(WeatherData.class))).thenReturn(mockWeatherData);
 
         // Call the service method
@@ -63,8 +65,9 @@ public class WeatherDataServiceImplTests {
 
     @Test
     public void testGetWeatherDataById() {
-        // Mock repository behavior
-        WeatherData mockWeatherData = new WeatherData();
+        WeatherData.Location location1 = new WeatherData.Location("merida", "mexico");
+        WeatherData.CurrentWeather cw1 = new WeatherData.CurrentWeather(23.4, 43.6, 38.5, 60);
+        WeatherData mockWeatherData = new WeatherData(1L, location1, cw1);
         when(weatherDataRepository.findById(1L)).thenReturn(Optional.of(mockWeatherData));
 
         // Call the service method
@@ -78,7 +81,9 @@ public class WeatherDataServiceImplTests {
     public void testGetWeatherDataFromApi() {
         // Mock restTemplate behavior
         String cityName = "TestCity";
-        WeatherData mockWeatherData = new WeatherData();
+        WeatherData.Location location1 = new WeatherData.Location("merida", "mexico");
+        WeatherData.CurrentWeather cw1 = new WeatherData.CurrentWeather(23.4, 43.6, 38.5, 60);
+        WeatherData mockWeatherData = new WeatherData(1L, location1, cw1);
         when(restTemplate.getForObject(anyString(), eq(WeatherData.class))).thenReturn(mockWeatherData);
 
         // Call the service method
